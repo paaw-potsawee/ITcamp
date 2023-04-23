@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUTT</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Castoro+Titling&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif&display=swap');
+        *{margin:0;padding:0;box-sizing: border-box;/*font-family: 'Castoro Titling', cursive;*/font-family: 'Instrument Serif', serif; font-weight: bold;}
+        :root{
+            --nav-color:rgb(82, 0, 175);
+            --nav-hover:rgb(52, 0, 112);
+            --font-color:rgb(161, 161, 161);
+        }
+        body{
+            background-color:rgb(89, 5, 168);
+            overflow-x:hidden;
+        }
+        nav{
+            position:fixed;
+            top:0;
+            width:100vw;
+            height:70px;
+            background-color:var(--nav-color);
+            display:flex;
+            justify-content:space-around;
+            transition: margin-top 0.5s ease-in-out;
+        }
+        .hidden{
+            margin-top:-70px;
+            transition: margin-top 0.5s ease-in-out;
+        }
+        nav a{
+            text-decoration:none;
+            color:var(--font-color);
+            display:block;
+            width:calc(100vw/6);
+            height:70px;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+        }
+        nav a:hover{
+            background-color:var(--nav-hover);
+        }
+        .dropdown:hover{
+            background-color:var(--nav-hover);
+            width:calc(100vw/6);
+            height: 70px;
+        }
+        .btndrop{
+            width:calc(100vw/6);
+            height: 70px;
+            border:none;
+            color:var(--font-color);
+            background-color:var(--nav-color);
+            font-size:large;
+            cursor:pointer;
+        }
+        .btndrop::after{
+            vertical-align:middle;
+            content:"";
+            width: 0;
+            height: 0;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            border-bottom: 14px solid var(--font-color);
+            display:inline-block;
+            transition: transform 0.3s ease;
+        }
+        .dropdown:hover .btndrop::after{
+            transform: rotate(180deg); 
+        }
+        .drops{
+            display:none
+        }
+        .dropdown:hover .drops{
+            position:absolute;
+            top:70px;
+            display:block;
+            display:flex;
+            flex-direction:column;
+            width:calc(100vw/6);
+            padding:0 4px 0 4px;
+        }
+        .drop{
+            position:relative;
+            text-decoration:none;
+            border-bottom: 2px solid var(--nav-hover);;
+            width:100%;
+            height: 45px;
+            text-align:center;
+            background-color:var(--nav-color);
+        }
+        .home{
+            background-color:var(--nav-hover);
+        }
+        section{
+            margin-top:70px;
+        }
+        .background{
+            background-image: url('nnn.png');
+            background-size:contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            aspect-ratio: 100/39.25;
+            width:100vw;
+        }
+        .content{
+            margin-top:50px;
+            margin-bottom:200px;
+        }
+        .content > h1{
+            color:var(--font-color);
+            margin-bottom:5px;
+            animation: movingHeading 2s ease-out 0s 1;
+        }
+        @keyframes movingHeading {
+            0%{
+                transform: translateX(-1000px);
+            }
+            80%{
+                transform: translateX(50px);
+            }
+            87%{
+                transform: translateX(0);
+            }
+            94%{
+                transform: translateX(30px);
+            }
+            100%{
+                transform: translateX(0);
+            }
+        }
+        .content > p{
+            padding:0 15vw 0 15vw;
+            color:var(--font-color);
+            line-height:2;
+        }
+        .btn-skip{
+            border: none;
+            background-color:transparent;
+            color:var(--font-color);
+            cursor: pointer;
+        }
+        .hidden-skip{
+            display:none;
+        }
+        .container{
+            display:flex;
+            justify-content: space-evenly;
+            margin-bottom:40vw;
+        }
+        .picture{
+            perspective: 1000px;
+            position:relative;
+            height:calc(16vw * 2);
+            width:calc(9vw * 2);
+            transform-style: preserve-3d;
+        }
+        .front,.back{
+            -webkit-backface-visibility: hidden; 
+            backface-visibility: hidden;
+            border-radius:10px;
+            width:100%;
+            height:100%;
+            position:absolute;
+        }
+        .front{
+            transform:rotateY(180deg);
+        }
+        .back{
+            transform:rotateY(0deg);
+        }
+        @keyframes flip {
+            0% {
+                transform: rotateY(0deg);
+            }
+            90% {
+                transform: rotateY(180deg);
+            }
+            100%{
+                transform: rotateY(180deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#">LOGO</a>
+        <a href="#" class="home">HOME</a>
+        <a href="#">SUTT__1</a>
+        <a href="#">SUTT__2</a>
+        <a href="#">SUTT__3</a>
+        <div class="dropdown">
+            <button class="btndrop">more </button>
+            <div class="drops">
+                <a href="#" class="drop">SUTT4</a>
+                <a href="#" class="drop">SUTT5</a>
+                <a href="#" class="drop">SUTT6</a>
+            </div>
+        </div>
+    </nav>    
+    <section>
+        <div class="background"></div>
+        <center class="content">
+            <h1>SUTT THE KING OF THE UNIVERSE</h1>
+            <p id="content">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+            </p>
+            <input type="submit" id="button" value="skip -->>>" class="btn-skip hidden-skip"/>
+        </center>
+        <center>
+            <h2 style="color:var(--font-color); margin-bottom:25px;">CLICK THE PICTURES TO SEE SUTT</h2>
+        </center>
+        <div class="container">
+            <div class="picture">
+                <img class="front" id="" src="front.png" alt="front">
+                <img class="back" src="background1.png" alt="back">
+            </div>
+            <div class="picture">
+                <img class="front" src="back1.png" alt="front">
+                <img class="back" src="background1.png" alt="back">
+            </div>
+        </div>
+    </section>
+    <script>
+        //toggle navigation bar
+        let nav = document.querySelector('nav');
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener("scroll",  () => {
+            if(lastScrollY < window.scrollY){
+                nav.classList.add("hidden");
+            }
+            else {
+                nav.classList.remove("hidden");
+            }
+
+            lastScrollY = window.scrollY; 
+        });
+
+        function content() {
+            let contentDetail = document.getElementById("content");
+            const content = 'SUTT เป็นสัตว์ประหลาดที่ไม่เคยมีผู้ใดไม่พบเห็นมันมาก่อน เพราะว่าจริงๆแล้วมันมีชีวิตอยู่ตั้งแต่ก่อนยุคที่ไดโนเสาร์จะเกิด หรือก่อนที่จะมีโลกเเสียอีก อย่างไรก็ตาม SUTT เป็นเจ้าแห่งสัพสิ่งทั้งมวลในตอนนั้น SUTT ท่องเที่ยวไปทั่วทั้งจักรวาลแต่วันหนึ่ง SUTT รู้สึกเบื่อจึงได้เริ่มสร้างสิ่งที่ไม่เคยมีในจักรวาลมาก่อน นั่นก็คือ "สิ่งมีชีวิตอื่น" โดยแผนของ SUTT คือการสร้างระบบสุริยะขึ้น โดย SUTT ได้วางแผนทุกสิ่งทุกอย่างที่จะเกิดขึ้นในอนาคต ไม่ว่าการเกิดของสิ่งมีชีวิตต่างๆ มากมาย ทำให้บนโลกแห่งนี้มีสิ่งมีชิวิตที่หลากหลาย จนให้ถึงปัจจุบัน SUTT ก็ยังเฝ้ามองโลก และสิ่งมีชีวิตที่ SUTT เป็นผู้สร้างขึ้นมาเองอย่างมีความสุข'
+            const arrContent = content.split("");
+            let clicked = false;
+            let btn = document.getElementById('button');
+            for (let i = 0; i < arrContent.length; i++) {
+                setTimeout(() => {
+                    if (clicked) {
+                        contentDetail.innerHTML = content;
+                        btn.classList.add("hidden-skip");
+                        return;
+                    }
+                    contentDetail.innerHTML += arrContent[i];
+                    if(i >= arrContent.length-1) btn.classList.add("hidden-skip");
+                }, 50 * i);
+            }
+            btn.addEventListener('click', () => {
+                clicked = true;
+            });
+        }
+
+        setTimeout(() => {
+            document.getElementById('button').classList.remove("hidden-skip");
+            content();
+        },2000);
+
+        let flips = document.querySelectorAll('.picture');
+        let front = document.querySelectorAll('.front');
+        let back = document.querySelectorAll('.back');
+        flips.forEach((flip,i) => {
+            flip.addEventListener('click', () => {
+                flip.style.animationName = "flip";
+                flip.style.animationDuration = "1s";
+                flip.style.animationIterationCount = "1";
+                setTimeout(() => {
+                    front[i].style.transform = "rotateY(0deg)";
+                    back[i].style.transform = "rotateY(180deg)";
+                },1000);
+            });
+        });
+
+
+    </script>
+</body>
+</html>
